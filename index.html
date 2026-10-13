@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gramática en Clase · Gramática de uso del español B1–B2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: sticky study bar + single reading column; main page is a chapter grid with a 3-step method strip */
+:root{
+  --bg:#F3F5F9; --surface:#FFFFFF; --ink:#172033; --muted:#5B6679; --line:#DDE2EC;
+  --accent:#B8283F; --accent-ink:#FFFFFF; --accent-soft:#FBE4E8;
+  --gold:#F2B705; --gold-soft:#FFF3C4; --chip:#E8EDF6;
+  --ok:#12805C; --ok-soft:#DDF4EA; --bad:#C0302B; --bad-soft:#FDE3E1; --half:#8A5600; --half-soft:#FFF0CC;
+  --f-display:"Bricolage Grotesque","Noto Sans KR",system-ui,sans-serif;
+  --f-body:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1522; --surface:#182033; --ink:#ECEFF6; --muted:#9AA6BC; --line:#2A3550;
+  --accent:#F0627A; --accent-ink:#1A0509; --accent-soft:#3B1A24; --gold:#F2B705; --gold-soft:#3A3010; --chip:#222C45;
+  --ok:#4FD1A0; --ok-soft:#12382D; --bad:#FF7A74; --bad-soft:#43201F; --half:#F2B705; --half-soft:#3A3010; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1522; --surface:#182033; --ink:#ECEFF6; --muted:#9AA6BC; --line:#2A3550;
+  --accent:#F0627A; --accent-ink:#1A0509; --accent-soft:#3B1A24; --gold:#F2B705; --gold-soft:#3A3010; --chip:#222C45;
+  --ok:#4FD1A0; --ok-soft:#12382D; --bad:#FF7A74; --bad-soft:#43201F; --half:#F2B705; --half-soft:#3A3010; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;margin:0}
+h1,h2,h3{font-family:var(--f-display);line-height:1.2;text-wrap:balance;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:980px;margin-inline:auto;padding-inline:16px}
+.col{max-width:780px;margin-inline:auto;padding-inline:16px}
+.es{font-style:italic;font-weight:500;cursor:pointer;border-bottom:1.5px dotted var(--accent);white-space:normal}
+.es:hover{background:var(--accent-soft)}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* ===== main ===== */
+.hero{padding-block:48px 28px}
+.hero h1{font-size:clamp(2.4rem,7vw,4rem);font-weight:800;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:60ch;color:var(--muted);margin:14px 0 0}
+.who{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:24px}
+.who label{font-weight:700;font-size:.9rem}
+.who input{font:inherit;padding:10px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:min(100%,260px)}
+.overall{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--muted)}
+.bar{height:8px;border-radius:99px;background:var(--chip);overflow:hidden;min-width:120px;flex:1}
+.bar>i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-block:8px 36px;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;background:var(--gold-soft);border-radius:14px;padding:14px 16px;font-size:.92rem}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#241a00;font-weight:800;margin-right:8px;font-family:var(--f-display)}
+.steps b{display:inline}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;padding-bottom:48px}
+.card{display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;text-decoration:none;transition:transform .15s,box-shadow .15s;min-width:0}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,30,60,.12)}
+.card .no{font-family:var(--f-display);font-weight:800;font-size:3.4rem;line-height:1;color:var(--accent)}
+.card h2{font-size:1.35rem;font-style:italic}
+.card .ko{font-weight:700}
+.card .desc{color:var(--muted);font-size:.9rem;flex:1}
+.card .meta{display:flex;justify-content:space-between;gap:8px;font-size:.85rem;color:var(--muted);flex-wrap:wrap}
+.card .go{font-weight:700;color:var(--accent)}
+.card.soon{background:transparent;border-style:dashed;justify-content:center;color:var(--muted);pointer-events:none}
+footer.site{padding-block:0 48px;color:var(--muted);font-size:.84rem}
+
+/* ===== chapter ===== */
+.studybar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.sb-row{display:flex;align-items:center;gap:10px;padding-block:8px;flex-wrap:wrap}
+.home{text-decoration:none;font-weight:700;font-size:.92rem;padding:6px 10px;border-radius:8px;background:var(--chip)}
+.tabs{display:flex;gap:6px}
+.tabs a{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;text-decoration:none;font-weight:700;font-family:var(--f-display);background:var(--chip)}
+.tabs a[aria-current="page"]{background:var(--accent);color:var(--accent-ink)}
+.sb-spacer{flex:1}
+.count{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.btn{border:0;border-radius:10px;padding:9px 16px;font-weight:700;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:var(--chip);color:var(--ink)}
+.btn:hover{filter:brightness(1.07)}
+.keys{display:flex;gap:6px;flex-wrap:wrap;padding-bottom:8px}
+.keys button{min-width:34px;height:32px;border-radius:8px;border:1px solid var(--line);background:var(--bg);font-weight:700}
+.keys span{font-size:.78rem;color:var(--muted);align-self:center;margin-right:4px}
+
+.ch-head{padding-block:36px 12px}
+.ch-head .no{font-family:var(--f-display);font-weight:800;color:var(--accent);font-size:1rem;letter-spacing:.1em}
+.ch-head h1{font-size:clamp(2rem,6vw,3rem);font-style:italic;font-weight:800;margin-top:4px}
+.ch-head h1 small{display:block;font-size:.5em;font-style:normal;font-weight:500;color:var(--muted);margin-top:4px}
+section.theory{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;margin-block:18px}
+section.theory h2{font-size:1.3rem;margin-bottom:10px}
+section.theory h3{font-size:1.05rem;margin:22px 0 8px}
+section.theory p{margin:8px 0}
+.tip{font-size:.84rem;color:var(--muted);margin:0 0 4px}
+.tw{overflow-x:auto;margin-block:10px}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:.95rem}
+th{background:var(--accent);color:var(--accent-ink);text-align:left;padding:8px 12px;font-size:.85rem}
+td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.note{border-radius:12px;padding:12px 14px;margin-block:12px;font-size:.95rem}
+.note.warn{background:var(--gold-soft)}
+.note.pero{background:var(--accent-soft)}
+.note b.lab{font-family:var(--f-display);letter-spacing:.06em;margin-right:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-block:8px}
+.chips .es{background:var(--chip);border:0;padding:3px 10px;border-radius:99px}
+ul.rules{padding-left:1.2em;margin:8px 0}
+ul.rules li{margin-block:4px}
+
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;margin-block:18px}
+.ex-head{display:flex;gap:12px;align-items:baseline;justify-content:space-between;flex-wrap:wrap;margin-bottom:6px}
+.ex-head h2{font-size:1.2rem}
+.ex-score{font-family:var(--f-display);font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.ex p.instr{margin:0 0 14px;color:var(--muted);font-size:.93rem}
+ol.items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+li.item{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;min-width:0;align-items:start}
+li.item .n{font-size:.8rem;font-weight:700;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.q{min-width:0;overflow-wrap:anywhere}
+.q input{font:inherit;font-style:italic;width:9.5em;max-width:100%;padding:3px 8px;margin-inline:4px;border:0;border-bottom:2px solid var(--accent);background:var(--chip);color:var(--ink);border-radius:6px 6px 0 0}
+.blank{display:inline-block;min-width:3.4em;text-align:center;margin-inline:4px;padding:0 8px;border-bottom:2px solid var(--accent);background:var(--chip);border-radius:6px 6px 0 0;font-style:italic;font-weight:500;min-height:1.5em;vertical-align:bottom}
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.opts button{border:1.5px solid var(--line);background:var(--bg);border-radius:9px;padding:3px 12px;font-style:italic;font-size:.95rem}
+.opts button[aria-checked="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.fb{font-size:.86rem;margin-top:6px;grid-column:2}
+li.item.ok{border-color:var(--ok);background:var(--ok-soft)}
+li.item.bad{border-color:var(--bad);background:var(--bad-soft)}
+li.item.half{border-color:var(--half);background:var(--half-soft)}
+li.item.ok .fb{color:var(--ok)} li.item.bad .fb{color:var(--bad)} li.item.half .fb{color:var(--half)}
+.fb b{font-style:italic}
+.fb .why{display:block;color:var(--ink);opacity:.85;margin-top:4px;line-height:1.55}.fb .why b{font-style:normal;font-family:var(--f-display);font-size:.78rem;letter-spacing:.05em;color:var(--muted);margin-right:4px}.unit-tag{font-family:var(--f-display);font-weight:800;color:var(--accent)}
+
+.result{background:var(--surface);border:2px solid var(--accent);border-radius:20px;padding:24px;margin-block:24px}
+.result[hidden]{display:none}
+.r-top{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.ring{position:relative;width:132px;height:132px;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:12}
+.ring .bg{stroke:var(--chip)} .ring .fg{stroke:var(--accent);stroke-linecap:round;transition:stroke-dasharray .8s}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-display);font-size:1.9rem;font-weight:800}
+.r-txt{min-width:0;flex:1}
+.r-txt h2{font-size:1.6rem}
+.r-txt p{margin:6px 0;color:var(--muted)}
+.brk{margin-top:18px;display:grid;gap:8px}
+.brk div{display:grid;grid-template-columns:minmax(0,1fr) 90px 60px;gap:10px;align-items:center;font-size:.9rem}
+.brk .bar{min-width:0}
+.brk span:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.r-act{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:12px 56px}
+.pager a{text-decoration:none;font-weight:700;padding:12px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+@media (max-width:520px){ol.items{grid-template-columns:1fr}.brk div{grid-template-columns:minmax(0,1fr) 60px 52px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style><style>
+.grp{grid-column:1/-1;font-family:var(--f-display);font-size:1.15rem;font-weight:800;margin:18px 0 -4px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.grp small{color:var(--muted);font-weight:500;font-size:.8rem;margin-left:8px}
+.find{font:inherit;padding:10px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:min(100%,320px)}
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0 0 16px}
+.card .no{font-size:2.6rem}
+.sum{font-size:.9rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const IDX=[{"id": 1, "es": "el hombre, la mujer", "ko": "남성·여성 명사 (1) 사람과 동물", "desc": "사람과 동물을 나타내는 명사의 남성형·여성형 만드는 방법과 예외(형태가 같은 명사, 두 가지 여성형)를 정리합니다.", "n": 40, "g": "명사 · 관사 · 지시사"}, {"id": 2, "es": "el libro, la casa", "ko": "남성·여성 명사 (2) 사물", "desc": "사물 명사의 성을 어미(-o, -a, -ción, -dad…)로 구분하고, 예외와 성에 따라 뜻이 달라지는 명사를 익힙니다.", "n": 32, "g": "명사 · 관사 · 지시사"}, {"id": 3, "es": "niño, niños", "ko": "단수와 복수", "desc": "명사의 복수형 만드는 규칙(-s / -es, -z→-ces, 단복수 동형, 복수형만 쓰는 명사)을 정리합니다.", "n": 35, "g": "명사 · 관사 · 지시사"}, {"id": 4, "es": "un, una, unos, unas", "ko": "부정관사", "desc": "부정관사 un·una·unos·unas의 쓰임(분류, 일반적 의미, 수량, 대략)과 a-/ha- 강세 명사 앞의 un, uno·una 대명사적 쓰임을 배웁니다.", "n": 28, "g": "명사 · 관사 · 지시사"}, {"id": 5, "es": "Es médico", "ko": "관사의 생략", "desc": "부정관사를 쓰지 않는 경우(셀 수 없는 명사, 직업·국적 보어, 일반적 목적어, 명사+전치사+명사)와 예외를 익힙니다.", "n": 25, "g": "명사 · 관사 · 지시사"}, {"id": 6, "es": "el, la, los, las", "ko": "정관사", "desc": "정관사의 쓰임(유일한 대상, 상황상 명확한 대상, 앞서 언급된 대상, 일반적 의미, 신체·의류), el agua 같은 a- 강세 여성 명사, al/del를 배웁니다.", "n": 25, "g": "명사 · 관사 · 지시사"}, {"id": 7, "es": "la blanca, los de oro, lo difícil", "ko": "명사의 생략", "desc": "앞에서 말한 명사를 생략하는 정관사 구문(el + 형용사, el + de + 명사)과 중성 관사 lo(lo + 형용사, lo de)를 배웁니다.", "n": 30, "g": "명사 · 관사 · 지시사"}, {"id": 8, "es": "un libro / el libro", "ko": "부정관사와 정관사의 대조", "desc": "새로운 정보(un)와 이미 아는 정보(el), 분류와 특정, 수량과 일반 의미 등 부정관사·정관사의 선택 기준을 비교합니다.", "n": 32, "g": "명사 · 관사 · 지시사"}, {"id": 9, "es": "la señorita Moreno, los Andes", "ko": "정관사와 고유명사", "desc": "사람 이름·직함, 신문·건물·거리·강·산·섬·국가 같은 고유명사에서 정관사를 쓰는 경우와 쓰지 않는 경우를 구분합니다.", "n": 27, "g": "명사 · 관사 · 지시사"}, {"id": 10, "es": "el cinco de octubre, dos días a la semana", "ko": "정관사와 시간·수량 표현", "desc": "시각·날짜·요일·하루의 때, 빈도(al día, a la semana), 가격·단위(el kilo) 표현에서 정관사 쓰임을 정리합니다.", "n": 24, "g": "명사 · 관사 · 지시사"}, {"id": 11, "es": "jugar al tenis, el español", "ko": "정관사의 그 밖의 쓰임", "desc": "악기·운동·과목·언어·매체·장소·교통수단 등에서 정관사를 쓰는 경우와 생략되는 경우(tocar, jugar a, hablar, en casa, en tren 등)를 정리합니다.", "n": 26, "g": "명사 · 관사 · 지시사"}, {"id": 12, "es": "este, ese, aquel, eso", "ko": "지시사", "desc": "este·ese·aquel의 형태와 거리 차이, 시간 표현, 중성 지시사 esto·eso·aquello의 쓰임을 배웁니다.", "n": 20, "g": "명사 · 관사 · 지시사"}, {"id": 13, "es": "inteligente, enfermo, español", "ko": "형용사의 성과 수", "desc": "형용사·국적 형용사의 여성형, 복수형 만드는 규칙과 성·수 일치, 남성+여성의 일치를 배웁니다.", "n": 27, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 14, "es": "un niño pobre, un pobre niño", "ko": "형용사의 위치", "desc": "형용사가 명사 뒤·앞에 올 때의 차이, 위치에 따라 뜻이 바뀌는 형용사, bueno·grande·malo의 어미 탈락, 동사와 형용사의 위치를 배웁니다.", "n": 24, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 15, "es": "más alto, el más alto", "ko": "우등·열등 비교급과 최상급", "desc": "más/menos + 형용사 + que(비교급), el más/menos + 형용사 + de(최상급), 불규칙 mayor·menor·mejor·peor와 비교 구문을 배웁니다.", "n": 24, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 16, "es": "tan alto, igual de alto", "ko": "동등 비교급", "desc": "tan + 형용사 + como, igual de + 형용사 + que로 두 대상의 같음을 표현하고, 부정문과 비교 대상 생략을 익힙니다.", "n": 24, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 17, "es": "mi, mío; tu, tuyo; su, suyo...", "ko": "소유사 (1)", "desc": "mi/tu/su(명사 앞)와 mío/tuyo/suyo(ser 뒤, el mío), su의 모호함과 de + 인칭, 신체·의류에는 정관사를 쓰는 규칙을 배웁니다.", "n": 22, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 18, "es": "mi profesor / un profesor mío", "ko": "소유사 (2)", "desc": "mi + 명사(유일·특정)와 un + 명사 + mío(여럿 중 하나)의 차이, ser + 명사 + mío(관계), uno de mis + 복수명사를 배웁니다.", "n": 19, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 19, "es": "todos, algunos, varios, uno, ninguno, alguno", "ko": "부정어 (1)", "desc": "todos, algunos, varios, uno, alguno, ninguno로 집단의 구성원을 나타내는 방법과 algún/ningún 어미 탈락, 부정문에서의 위치를 배웁니다.", "n": 22, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 20, "es": "un, otro", "ko": "부정어 (2)", "desc": "un/una/unos/unas와 otro/otra/otros/otras의 쓰임(더, 다른), 정관사·소유사와의 결합과 el otro día를 배웁니다.", "n": 22, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 21, "es": "cada, cualquiera", "ko": "부정어 (3)", "desc": "cada, cada uno de, cualquier(a)의 쓰임: 개별 구성원, 일정 수량마다, 아무거나·아무나를 나타내는 방법을 배웁니다.", "n": 22, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 22, "es": "alguien, algo, nadie, nada", "ko": "부정어 (4)", "desc": "alguien·nadie(사람), algo·nada(사물)의 쓰임, 뒤에 오는 형용사(남성 단수), alguien de, + más, 부정문 위치와 alguno/ninguno와의 차이를 배웁니다.", "n": 22, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 23, "es": "más, menos, tanto", "ko": "명사의 비교", "desc": "명사와 함께 쓰는 más/menos(양의 증감), más de/menos de(수량 기준), más/menos/tanto + 명사 + que/como 비교를 배웁니다.", "n": 24, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 24, "es": "primero, undécimo, vigésimo primero", "ko": "서수 (1)", "desc": "서수의 형태(primero~centésimo), primer·tercer 어미 탈락, 일상 회화와 격식체에서의 서수 사용 범위를 배웁니다.", "n": 26, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 25, "es": "la mitad, el doble", "ko": "수사 (2) 분수와 배수", "desc": "분수(la mitad, un tercio, un cuarto…)와 배수(el doble, el triple…)의 표현과 de/que 구문을 배웁니다.", "n": 22, "g": "형용사 · 비교 · 수 · 부정어"}, {"id": 26, "es": "yo, para mí, conmigo", "ko": "주격 인칭대명사와 전치사 뒤 대명사", "desc": "주격 인칭대명사의 사용 시점(강조·대조·단독), 전치사 뒤 형태(mí, ti, él…), yo/tú를 쓰는 전치사(entre, según 등), conmigo·contigo를 배웁니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 27, "es": "me ama, me ha regalado una pluma", "ko": "인칭대명사 목적격 (1)", "desc": "직접목적(me, te, lo, la…)과 간접목적(me, te, le, se…) 대명사의 형태·쓰임, le/les와 lo/los의 구분, se lo, 중성 lo, 대명사의 위치를 배웁니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 28, "es": "La comida la pago yo. A mí no me ha dado nada", "ko": "인칭대명사 목적격 (2)", "desc": "명사와 대명사를 함께 쓰는 중복 목적어(La comida la pago yo), 강조·대조의 a mí/a ti, 중복 사용의 규칙을 배웁니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 29, "es": "me baño, nos queremos", "ko": "재귀대명사와 상호 의미", "desc": "재귀대명사(me, te, se, nos, os, se)의 형태와 쓰임(재귀·신체·의류), 서로 ‘~하다’를 나타내는 상호 의미, 위치를 배웁니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 30, "es": "ámame, verte, diciéndole", "ko": "명령법·원형·현재분사와 목적격 대명사", "desc": "명령법(긍정 뒤 붙임·부정 앞)·동사원형·현재분사에 목적격 대명사를 붙이는 규칙과 악센트 부호, 조동사 구문에서 대명사 위치를 배웁니다.", "n": 24, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 31, "es": "que, el que, quien", "ko": "관계사 (1)", "desc": "관계대명사 que, el que(la que, los que, las que), quien(quienes)의 쓰임: 선행사 수식, 전치사 뒤, 선행사 생략을 배웁니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 32, "es": "donde, cuando, como", "ko": "관계사 (2)", "desc": "장소·시간·방식을 가리키는 관계부사 donde(adonde), cuando, como의 쓰임과 en el que 등 대체 표현을 배웁니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 33, "es": "¿quién?, ¿qué?, ¿cuál?", "ko": "의문사 (1)", "desc": "quién(es), qué, cuál(es)의 구분: 사람·사물·선택, 전치사와 함께 쓰는 의문문, 어순을 배웁니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 34, "es": "¿quién? / ¿qué poeta famoso? / ¿cuál de estos poetas?", "ko": "의문사의 대조", "desc": "quién · qué + 명사 · cuál의 선택 기준(일반적 질문 vs 특정 집단 선택), ser 의문문(qué es, quién es, cuál es)을 비교합니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 35, "es": "¿dónde?, ¿cuándo?, ¿cuánto?", "ko": "의문사 (2)", "desc": "dónde/adónde, cuándo, cuánto(a, os, as), cómo, por qué, para qué의 쓰임과 의문문의 어순을 배웁니다.", "n": 24, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 36, "es": "¡qué!, ¡cuánto!, ¡cómo!, ¡quién!", "ko": "감탄문", "desc": "¡Qué + 형용사/명사/부사!, ¡Cuánto/a/os/as!, ¡Cómo!, ¡Quién!로 놀람·감탄·불만을 표현하는 방법을 배웁니다.", "n": 22, "g": "대명사 · 관계사 · 의문사 · 감탄문"}, {"id": 37, "es": "soy, estoy", "ko": "ser와 estar의 직설법 현재", "desc": "ser와 estar의 현재 활용, 각각의 쓰임(정체·직업·국적·성격 vs 위치·상태), 의미가 달라지는 형용사를 배웁니다.", "n": 28, "g": "ser / estar · 직설법 현재"}, {"id": 38, "es": "hay, estoy", "ko": "haber 비인칭 hay와 estar", "desc": "존재를 나타내는 hay와 위치를 나타내는 estar의 차이: 정보의 신구, 불특정·특정, 정관사·소유사와 hay를 함께 쓸 수 없는 규칙을 배웁니다.", "n": 24, "g": "ser / estar · 직설법 현재"}, {"id": 39, "es": "trabajo, como, vivo", "ko": "직설법 현재: 규칙동사", "desc": "-ar, -er, -ir 규칙동사의 현재 활용과 철자 주의 동사(ver, coger, vencer, continuar, enviar, prohibir), 현재의 쓰임을 배웁니다.", "n": 24, "g": "ser / estar · 직설법 현재"}, {"id": 40, "es": "quiero, mido, sueño", "ko": "직설법 현재: 불규칙동사 (1)", "desc": "어간모음 변화 e→ie, e→i, o→ue, u→ue 동사와 venir, tener, decir, 철자 변화 동사(elegir, seguir, cocer, oler)를 배웁니다.", "n": 28, "g": "ser / estar · 직설법 현재"}, {"id": 41, "es": "voy, hago, conozco", "ko": "직설법 현재: 불규칙동사 (2)", "desc": "1인칭만 불규칙한 동사(dar, hacer, saber, poner, salir, conocer, conducir, traer)와 전체 불규칙 huir, oír, ir를 배웁니다.", "n": 26, "g": "ser / estar · 직설법 현재"}, {"id": 42, "es": "¿Qué haces el domingo?", "ko": "직설법 현재: 그 밖의 쓰임", "desc": "가까운 미래, 일정·시간표, 지시, 제안, 조언 요청, 도움 제안, 부탁 등 직설법 현재의 다양한 용법을 배웁니다.", "n": 22, "g": "ser / estar · 직설법 현재"}, {"id": 43, "es": "Vivo en México desde 1998", "ko": "기간을 나타내는 현재형", "desc": "과거에 시작해 지금까지 계속되는 동작을 desde + 시점, desde hace + 기간, hace + 기간 + que + 현재로 나타내는 방법을 배웁니다.", "n": 22, "g": "ser / estar · 직설법 현재"}, {"id": 44, "es": "Llevan siete meses casados", "ko": "llevar로 기간 표현", "desc": "llevar + 기간/desde, llevar + 기간 + 형용사·과거분사, llevar + 현재분사, llevar sin + 원형으로 지속 기간을 말하는 방법을 배웁니다.", "n": 22, "g": "ser / estar · 직설법 현재"}, {"id": 45, "es": "Me aburro", "ko": "재귀 동사 (me, te, se…)", "desc": "se를 동반하는 동사(재귀·상호·강조), 항상 se를 쓰는 동사(arrepentirse, atreverse, quejarse), se의 유무로 뜻이 달라지는 동사(dormir/dormirse, ir/irse…)를 배웁니다.", "n": 22, "g": "ser / estar · 직설법 현재"}, {"id": 46, "es": "Me gusta la ópera", "ko": "gustar류 동사 (me, te, le…)", "desc": "gustar, encantar, doler, apetecer, interesar, molestar, quedar, sentar 등 ‘간접목적 대명사 + 동사’ 구조를 배웁니다.", "n": 30, "g": "ser / estar · 직설법 현재"}, {"id": 47, "es": "Están jugando en el jardín", "ko": "estar + 현재분사, 현재와의 대조", "desc": "지금 진행 중인 동작을 나타내는 estar + gerundio와, 습관을 나타내는 직설법 현재의 차이를 배웁니다.", "n": 33, "g": "ser / estar · 직설법 현재"}, {"id": 48, "es": "De joven, viví en México", "ko": "단순 과거(Pretérito indefinido): 규칙 동사", "desc": "규칙 동사의 indefinido 활용과 -car, -zar, -gar, -guar 동사의 철자 변화를 배웁니다.", "n": 30, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 49, "es": "Murió en 1616", "ko": "단순 과거(Pretérito indefinido): 불규칙 동사", "desc": "어간모음 변화(pedir, dormir), -yó형(leer, oír), 어간이 바뀌는 불규칙, ir/ser의 단순 과거를 배웁니다.", "n": 38, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 50, "es": "He tenido un accidente", "ko": "현재완료(Pretérito perfecto)", "desc": "haber 현재형 + 과거분사. 지금까지 이어지는 기간, 방금 일어난 일, 경험, ya / todavía no 의 쓰임을 배웁니다.", "n": 30, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 51, "es": "ha llamado / llamó", "ko": "현재완료 vs. 단순 과거", "desc": "두 과거 시제를 시간 표현으로 구분합니다. 오늘·올해처럼 현재에 속한 시간은 perfecto, ayer·작년처럼 끝난 시간은 indefinido입니다.", "n": 28, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 52, "es": "Quería ser astronauta", "ko": "불완료 과거(Pretérito imperfecto)", "desc": "과거의 습관, 묘사, 진행 중이던 동작, 배경 상황, 공손한 표현에 쓰는 imperfecto의 활용과 용법을 배웁니다.", "n": 28, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 53, "es": "monté / montaba", "ko": "단순 과거 vs. 불완료 과거", "desc": "끝난 사건(indefinido)과 습관·배경·진행 중인 상황(imperfecto)을 비교하며 이야기에서 두 시제를 함께 쓰는 법을 배웁니다.", "n": 28, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 54, "es": "estaba trabajando / trabajé", "ko": "estaba + 현재분사, 단순 과거와의 대조", "desc": "과거의 어느 순간 진행 중이던 동작(estaba + gerundio)과 그 동작을 끊고 일어난 짧은 사건(indefinido)을 구분합니다.", "n": 24, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 55, "es": "había trabajado", "ko": "대과거(Pretérito pluscuamperfecto)", "desc": "haber 불완료 과거 + 과거분사. 과거의 어느 시점보다 먼저 일어난 일을 나타냅니다.", "n": 24, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 56, "es": "trabajaré, podré, haré…", "ko": "단순 미래(Futuro simple)", "desc": "규칙·불규칙 단순 미래의 활용과 미래의 일, 예측, 의견, 추측에 쓰는 용법을 배웁니다.", "n": 25, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 57, "es": "voy a trabajar / trabajaré", "ko": "ir a + 부정사 vs. 단순 미래", "desc": "즉각적인 계획·의도(ir a + infinitivo)와 막연한 미래·예측(futuro simple)의 차이를 배웁니다.", "n": 28, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 58, "es": "haré / voy a hacer / hago", "ko": "단순 미래 · ir a · 직설법 현재의 미래 표현", "desc": "미래를 나타내는 세 가지 방법을 비교합니다. 이미 정해진 일은 현재형, 의견·약속·막연한 미래는 futuro simple, 계획·징후는 ir a를 씁니다.", "n": 19, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 59, "es": "habré trabajado", "ko": "미래완료(Futuro perfecto)", "desc": "haber 단순 미래 + 과거분사. 미래의 어느 시점까지 끝나 있을 일과 현재에 대한 추측을 나타냅니다.", "n": 20, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 60, "es": "trabajaría…", "ko": "가능법 단순(Condicional simple): 규칙 동사", "desc": "원형 + -ía 어미. 가정, 소망, 충고, 정중한 부탁, 과거에서 본 미래를 나타냅니다.", "n": 26, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 61, "es": "habría, podría…", "ko": "가능법 단순: 불규칙 동사", "desc": "미래와 같은 불규칙 어간에 -ía 어미를 붙입니다. haber, poder, saber, poner, salir, tener, venir, decir, hacer, querer, valer.", "n": 28, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 62, "es": "habría trabajado", "ko": "가능법 완료(Condicional compuesto)", "desc": "habría + 과거분사. 과거에 하고 싶었지만 못 한 일, 과거의 특별한 상황 덕에 가능했던 일, 과거에 대한 추측을 나타냅니다.", "n": 22, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 63, "es": "Serán las tres. La haría Rafa", "ko": "확실성과 추측의 시제 비교", "desc": "사실을 말할 때와 추측할 때 쓰는 시제 쌍을 비교합니다: 현재↔futuro simple, perfecto↔futuro perfecto, indefinido·imperfecto↔condicional.", "n": 25, "g": "직설법 과거 · 미래 · 조건법"}, {"id": 64, "es": "come, no comas", "ko": "명령법(Imperativo): 규칙 동사", "desc": "tú, usted, vosotros, ustedes에 대한 긍정·부정 명령형과 -gar, -ger, -car, -zar 동사, 재귀동사의 명령형을 배웁니다.", "n": 28, "g": "명령법"}, {"id": 65, "es": "cierra, pide…", "ko": "명령법: 불규칙 동사 1 (어간 변화)", "desc": "e→ie, e→i 어간 변화 동사의 명령형을 배웁니다. tú와 usted, ustedes는 변하고 vosotros는 규칙입니다.", "n": 28, "g": "명령법"}, {"id": 66, "es": "sueña, duerme…", "ko": "명령법: 불규칙 동사 2 (o→ue, o→u 등)", "desc": "o→ue(soñar, volver, poder…), o→u(dormir, morir), u→ue(jugar) 동사의 명령형을 배웁니다.", "n": 26, "g": "명령법"}, {"id": 67, "es": "di, haz, pon…", "ko": "명령법: 불규칙 동사 3 (tú 불규칙형)", "desc": "tú 긍정 명령이 불규칙한 동사(decir, hacer, poner, salir, tener, venir, ir, ser)와 usted, vosotros, 부정형을 배웁니다.", "n": 29, "g": "명령법"}, {"id": 68, "es": "dámelo, no me lo des", "ko": "명령법과 대명사", "desc": "긍정 명령은 대명사를 동사 뒤에 붙이고, 부정 명령은 동사 앞에 놓습니다. 간접목적어 + 직접목적어 순서와 se로의 변화도 배웁니다.", "n": 28, "g": "명령법"}, {"id": 69, "es": "trabaje, coma, viva", "ko": "접속법 현재(Presente de subjuntivo): 규칙 동사", "desc": "-ar 동사는 -e, -er/-ir 동사는 -a 어미를 씁니다. 철자 변화 동사와 접속법을 쓰는 기본 구문도 배웁니다.", "n": 27, "g": "접속법"}, {"id": 70, "es": "quiera, pida…", "ko": "접속법 현재: 불규칙 1 (e→ie, e→i)", "desc": "e→ie(cerrar, querer), e→ie/i(sentir), e→i(pedir) 동사와 -gir, -guir 동사의 접속법 현재를 배웁니다.", "n": 29, "g": "접속법"}, {"id": 71, "es": "pueda, juegue, duerma…", "ko": "접속법 현재: 불규칙 2 (o→ue, u→ue)", "desc": "o→ue(soñar, poder), u→ue(jugar), o→ue/u(dormir, morir) 동사의 접속법 현재를 배웁니다.", "n": 30, "g": "접속법"}, {"id": 72, "es": "conozca, diga, vaya", "ko": "접속법 현재: 불규칙 3", "desc": "yo형이 불규칙한 동사(conocer, decir, hacer, poner, tener, venir, salir, traer, oír, huir)와 ir, haber, saber, ser, estar, dar의 접속법 현재를 배웁니다.", "n": 31, "g": "접속법"}, {"id": 73, "es": "trabajara, comiera, viviera", "ko": "접속법 불완료 과거: 규칙 동사", "desc": "3인칭 복수 단순 과거형에서 -ron을 떼고 -ra 어미를 붙입니다. 과거 소망, 현재·미래의 비현실적인 소망(ojalá)을 나타냅니다.", "n": 27, "g": "접속법"}, {"id": 74, "es": "fuera, tuviera…", "ko": "접속법 불완료 과거: 불규칙 동사", "desc": "3인칭 복수 단순 과거형에서 -ron을 떼고 -ra를 붙이는 규칙을 불규칙 동사에도 적용합니다. ojalá와 과거·조건 문장에서의 쓰임을 배웁니다.", "n": 30, "g": "접속법"}, {"id": 75, "es": "Quiero que me ayudes", "ko": "바람 표현하기", "desc": "¡Que + 접속법!, ojalá, 그리고 querer, desear, esperar 등 소망 동사 뒤에 쓰는 접속법과 부정사의 구분을 배웁니다.", "n": 28, "g": "접속법"}, {"id": 76, "es": "Quizá lo haga", "ko": "가능성 표현하기 1", "desc": "creo que, supongo que, me imagino que, estoy seguro de que + 직설법, quizá, puede que, posiblemente + 접속법 등 확신 정도에 따른 표현을 배웁니다.", "n": 26, "g": "접속법"}, {"id": 77, "es": "A lo mejor me toca", "ko": "가능성 표현하기 2", "desc": "seguramente, probablemente, posiblemente, a lo mejor, igual, lo mismo의 쓰임과 서법을 배웁니다.", "n": 24, "g": "접속법"}, {"id": 78, "es": "Me gusta que seáis educados", "ko": "감정 표현하기", "desc": "감정을 나타내는 동사·표현 뒤에 que + 접속법을 씁니다. 주어가 같으면 부정사를 씁니다.", "n": 28, "g": "접속법"}, {"id": 79, "es": "Me parece bien que estudies", "ko": "평가·의견 표현하기", "desc": "es bueno/malo/necesario/importante/normal que…, me parece bien/mal que… 뒤의 접속법과, 일반적인 평가의 부정사를 배웁니다.", "n": 31, "g": "접속법"}, {"id": 80, "es": "Creo que es… / No creo que sea…", "ko": "직설법과 접속법", "desc": "creer, pensar, parecer, saber 등 생각·확신 동사의 긍정은 직설법, 부정은 접속법을 쓰는 규칙을 배웁니다.", "n": 32, "g": "접속법"}, {"id": 81, "es": "haya trabajado", "ko": "접속법 현재완료(Pretérito perfecto de subjuntivo)", "desc": "haya + 과거분사. 접속법이 필요한 구문에서 이미 완료된 일이나 지금까지의 일을 나타냅니다.", "n": 23, "g": "접속법"}, {"id": 82, "es": "hubiera trabajado", "ko": "접속법 대과거(Pretérito pluscuamperfecto de subjuntivo)", "desc": "hubiera + 과거분사. 이루어지지 않은 과거의 소망과, 과거에 일어났는지 확실하지 않은 일을 나타냅니다.", "n": 22, "g": "접속법"}, {"id": 83, "es": "Dice que tiene… Dijo que tenía…", "ko": "간접화법 1: 평서문", "desc": "남의 말을 전할 때 쓰는 decir que… 구문과 시제 변화, 인칭·시간 표현의 변화를 배웁니다.", "n": 27, "g": "간접화법"}, {"id": 84, "es": "Me preguntó dónde vivía", "ko": "간접화법 2: 의문문", "desc": "si, 의문사 + 시제 변화로 질문을 전달하는 방법을 배웁니다. preguntar, querer saber, me gustaría saber…", "n": 23, "g": "간접화법"}, {"id": 85, "es": "Me pidió que le ayudara", "ko": "간접화법 3: 명령·부탁", "desc": "명령과 부탁을 전달할 때 쓰는 que + 접속법을 배웁니다. 전달 동사의 시제에 따라 현재 접속법 / 불완료 접속법을 씁니다.", "n": 26, "g": "간접화법"}, {"id": 86, "es": "Trabajar es sano", "ko": "부정사(Infinitivo)", "desc": "동사원형은 명사처럼 주어·목적어로 쓰이고, 전치사 뒤에서도 쓰입니다. 부정사의 주어가 같은지 다른지에 따라 대명사 사용이 달라집니다.", "n": 24, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 87, "es": "Sueño con ser famoso", "ko": "부정사가 따르는 동사", "desc": "동사 뒤에 바로, 또는 전치사(a, de, en, con)를 거쳐 부정사가 오는 동사들을 배웁니다.", "n": 28, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 88, "es": "Quiero ir / Quiero que vayas", "ko": "부정사 또는 접속법이 따르는 동사", "desc": "aconsejar, esperar, gustar, necesitar, preferir, querer, recomendar 등은 주어가 같으면 부정사, 다르면 que + 접속법을 씁니다.", "n": 24, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 89, "es": "hacerlo, aburrirse", "ko": "부정사와 목적어 대명사", "desc": "부정사에 목적격 대명사와 재귀대명사를 붙이는 방법을 배웁니다.", "n": 22, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 90, "es": "Me puse a trabajar. Voy a trabajar", "ko": "부정사 관용 표현 1", "desc": "ponerse a, echarse a, dejar de, acabar de, ir a, volver a 등 시작·중단·직후를 나타내는 표현을 배웁니다.", "n": 24, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 91, "es": "Tengo que trabajar. ¿Puedo abrir la ventana?", "ko": "부정사 관용 표현 2", "desc": "tener que, deber, haber que, poder, saber 등 의무·필요·허락·능력을 나타내는 표현을 배웁니다.", "n": 24, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 92, "es": "Suelo acostarme temprano. Llevo dos días sin dormir", "ko": "부정사 관용 표현 3", "desc": "soler, llevar + 기간 + sin + 부정사, volver a + 부정사를 배웁니다.", "n": 24, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 93, "es": "paseando por el parque", "ko": "현재분사(Gerundio)", "desc": "현재분사의 형태, 불규칙형, 그리고 동시 동작·방법·진행을 나타내는 쓰임을 배웁니다.", "n": 24, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 94, "es": "Sigo buscando trabajo. Llevo media hora esperando", "ko": "현재분사 관용 표현", "desc": "ir, seguir, llevar + gerundio와 gerundio에 붙는 대명사 위치를 배웁니다.", "n": 24, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 95, "es": "trabajado, abierto, dicho", "ko": "과거분사(Participio)", "desc": "과거분사의 규칙·불규칙 형태와 haber·ser·estar·seguir와 함께 쓰는 법, 형용사로의 쓰임을 배웁니다.", "n": 26, "g": "동사원형 · 현재분사 · 과거분사"}, {"id": 96, "es": "muy, mucho, muchos, muchísimo", "ko": "정도·양 표현", "desc": "muy / mucho / bastante / poco / demasiado, tan / tanto, 그리고 -ísimo 최상급을 배웁니다.", "n": 24, "g": "부사 · 전치사"}, {"id": 97, "es": "fácilmente, diariamente, verdaderamente", "ko": "-mente 부사", "desc": "형용사의 여성 단수형 + -mente. 방법, 빈도, 시간, 가능성, 평가, 확인, 한정, 강조를 나타냅니다.", "n": 28, "g": "부사 · 전치사"}, {"id": 98, "es": "a, hasta, hacia, de, desde", "ko": "전치사 1", "desc": "a, hasta, hacia, de, desde의 용법을 배웁니다. 시각, 방향, 도착점, 출발점, 소유, 재료, 출신 등을 나타냅니다.", "n": 28, "g": "부사 · 전치사"}, {"id": 99, "es": "en, entre, sobre, con, sin, contra, según", "ko": "전치사 2", "desc": "en, entre, sobre, con, sin, contra, según의 쓰임을 배웁니다.", "n": 28, "g": "부사 · 전치사"}, {"id": 100, "es": "por, para", "ko": "전치사 3: por와 para", "desc": "por (원인·수단·경유·교환·부분)와 para (목적·목적지·기한·용도)를 구분합니다.", "n": 28, "g": "부사 · 전치사"}, {"id": 101, "es": "Acuérdate de mí", "ko": "전치사가 따르는 동사", "desc": "특정 전치사를 요구하는 동사들을 배웁니다. a, de, en, con 뒤에는 부정사·명사·대명사가 올 수 있습니다.", "n": 28, "g": "부사 · 전치사"}, {"id": 102, "es": "La corbata que me regalaste", "ko": "관계절", "desc": "que, el que, quien, donde 등 관계사로 명사를 꾸미는 문장입니다. 한정적(필수 정보)과 설명적(추가 정보) 용법을 구분합니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 103, "es": "antes de (que), después de (que), hasta (que), desde (que)…", "ko": "시간절 1", "desc": "antes de, después de, hasta + 부정사 / antes de que, después de que, hasta que + 접속법, desde que, hasta que + 직설법의 쓰임을 배웁니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 104, "es": "cuando, en cuanto, en el momento en que…", "ko": "시간절 2", "desc": "cuando, en cuanto, tan pronto como, apenas, siempre que, mientras, al, nada más + 직설법/접속법의 선택을 배웁니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 105, "es": "Donde dice Sara. Como a ti te gusta", "ko": "장소절과 방식절", "desc": "donde, como, según 뒤의 서법 선택을 배웁니다. 특정한 곳·방식은 직설법, 불특정은 접속법입니다.", "n": 21, "g": "복문 · 문장 유형 · 수동"}, {"id": 106, "es": "porque, como, puesto que…", "ko": "원인절", "desc": "porque, como, ya que, puesto que, es que, por + 부정사, a causa de 등 이유를 나타내는 표현을 배웁니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 107, "es": "Para invitarnos. Para que lo conozcáis", "ko": "목적절", "desc": "para + 부정사(주어 같음), para que + 접속법(주어 다름)으로 목적·용도를 나타냅니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 108, "es": "Si apruebo, podré ir a la universidad", "ko": "조건문 1: 가능한 조건", "desc": "si + 직설법 현재로 현재·미래의 실현 가능한 조건을 나타냅니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 109, "es": "Si encontrara trabajo, me casaría", "ko": "조건문 2: 실현 가능성이 낮은 조건", "desc": "si + 불완료 접속법, 가능법으로 비현실적이거나 실현 가능성이 낮은 조건을 나타냅니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 110, "es": "Si hubiera encontrado trabajo, me habría casado", "ko": "조건문 3: 과거의 비현실적 조건", "desc": "si + 대과거 접속법, 가능법 완료(과거 결과) 또는 단순 가능법(현재 결과)로 과거에 이루어지지 않은 일을 나타냅니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 111, "es": "por eso, de tal forma que, tanto que…", "ko": "결과절", "desc": "por eso, así que, o sea que, de manera que, por lo tanto, tan … que, tanto … que 등 결과를 나타내는 표현을 배웁니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 112, "es": "aunque, a pesar de que…", "ko": "양보절", "desc": "aunque, a pesar de que, por más que, por mucho que + 직설법(사실)/접속법(가능성·가정)을 배웁니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 113, "es": "Aquí se trabaja mucho", "ko": "비인칭문 1 (se)", "desc": "se + 3인칭 단수로 주어가 없는 문장을 만듭니다. se dice que, se puede + 부정사 등을 배웁니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 114, "es": "Llueve mucho", "ko": "비인칭문 2", "desc": "날씨 표현(llover, hacer + 날씨), ser + 형용사 + 부정사, parecer que, haber 비인칭 구문을 배웁니다.", "n": 24, "g": "복문 · 문장 유형 · 수동"}, {"id": 115, "es": "fue construida, estará abierta", "ko": "수동태", "desc": "ser + 과거분사, estar + 과거분사(결과), 수동 se, 그리고 능동태와의 차이를 배웁니다.", "n": 26, "g": "복문 · 문장 유형 · 수동"}, {"id": 116, "es": "adiós, león, continúa", "ko": "악센트 규칙", "desc": "강세 위치와 악센트 부호(tilde) 규칙, 이중모음·이중모음 분리(hiato), 의미 구별을 위한 tilde를 배웁니다.", "n": 30, "g": "철자와 강세"}];
+const $ = s => document.querySelector(s);
+const store = {
+  get(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+};
+const fmt = n => (Math.round(n*10)/10).toString();
+const esc = s => s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+function render(q){
+  const pr = store.get('gdu-b1b2-progress') || {}; const name = store.get('gdu-name')||'';
+  const done = IDX.filter(c=>pr['ch'+c.id]).length;
+  const got = IDX.reduce((a,c)=>a+(pr['ch'+c.id]?pr['ch'+c.id].score:0),0);
+  const tot = IDX.reduce((a,c)=>a+(pr['ch'+c.id]?pr['ch'+c.id].total:0),0);
+  q=(q||'').trim().toLowerCase();
+  let last=null, cards='';
+  IDX.forEach(c=>{
+    if(q && !(String(c.id)===q || (c.es+' '+c.ko+' '+c.desc).toLowerCase().includes(q))) return;
+    if(c.g!==last){ last=c.g; cards+=`<div class="grp">${c.g}</div>`; }
+    const p=pr['ch'+c.id];
+    cards+=`
+      <a class="card" href="Unidad${c.id}/">
+        <div class="no">${c.id}</div>
+        <h2>${esc(c.es)}</h2>
+        <div class="ko">${c.ko}</div>
+        <div class="desc">${c.desc}</div>
+        <div class="bar"><i style="width:${p?p.score/p.total*100:0}%"></i></div>
+        <div class="meta"><span>${c.n}문제</span><span>${p?`최고 ${fmt(p.score)} / ${p.total}점`:'아직 풀지 않음'}</span></div>
+        <span class="go">학습하기 →</span>
+      </a>`;
+  });
+  if(!cards) cards='<div class="card soon"><div class="ko">검색 결과가 없어요</div></div>';
+  $('#grid').innerHTML=cards;
+  $('#prog').innerHTML=`<span>학습 진도 ${done} / ${IDX.length}</span><div class="bar"><i style="width:${done/IDX.length*100}%"></i></div>`;
+  $('#sum').textContent = tot?`누적 최고 점수 ${fmt(got)} / ${tot}점 (${Math.round(got/tot*100)}%)`:'';
+}
+$('#app').innerHTML = `
+  <header class="wrap hero">
+    <div class="eyebrow">Gramática de uso del español B1–B2 · Unidades 1–${IDX.length}</div>
+    <h1>Gramática <em>en Clase</em></h1>
+    <p>교재 1과부터 ${IDX.length}과까지 핵심 문법을 정리하고, 과마다 연습문제를 풀어 바로 점수와 정답, 해설을 확인하는 스페인어 학습 사이트입니다.</p>
+    <div class="who">
+      <label for="stu">이름</label><input id="stu" type="text" placeholder="이름을 입력하세요" autocomplete="off">
+      <div class="overall" id="prog"></div>
+    </div>
+    <div class="sum" id="sum" style="margin-top:8px"></div>
+  </header>
+  <main class="wrap">
+    <ol class="steps"><li><b>문법 정리</b>를 읽고 예문을 눌러 발음을 들어요.</li><li><b>연습문제</b>를 풀어요. 악센트 입력 버튼이 있어요.</li><li><b>채점하기</b>로 점수와 정답, 해설을 확인하고 틀린 문제만 다시 풀어요.</li></ol>
+    <div class="tools"><input class="find" id="find" type="search" placeholder="단원 번호나 문법 용어로 찾기 (예: 접속법, 32)" aria-label="단원 검색"></div>
+    <div class="grid" id="grid"></div>
+    <footer class="site">교재: Gramática de uso del español. Teoría y práctica, Nivel B1–B2 (L. Aragonés, R. Palencia, SM). 연습문제는 교재의 문법 항목에 맞춰 새로 구성했습니다.</footer>
+  </main>`;
+$('#stu').value = store.get('gdu-name')||'';
+$('#stu').addEventListener('input',e=>store.set('gdu-name',e.target.value));
+$('#find').addEventListener('input',e=>render(e.target.value));
+render('');
+</script>
+</body>
+</html>
